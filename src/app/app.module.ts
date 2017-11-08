@@ -5,26 +5,34 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+
+import { HttpClientModule} from '@angular/common/http';
+import { TabsPage } from '../pages/tabs/tabs';
+import {IonicStorageModule} from '@ionic/storage';
+import {Badge} from '@ionic-native/badge'
+import {ScreenOrientation } from '@ionic-native/screen-orientation'
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    TabsPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp), HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, 
+    Badge,
+    ScreenOrientation
   ]
 })
 export class AppModule {}
